@@ -14,12 +14,15 @@ class MovieDetailsView extends StatelessWidget {
                 backgroundColor: Colors.deepPurple,
                 elevation: 0,
                 centerTitle: true,
-                title: Text(_.movie!.movie.title),
+                title: Text(_.movie!.title),
+                //title: Text(_.moviePopular!.title),
               ),
               body: Column(
                 children: [
-                  Text(_.movie!.movie.title),
-                  Text(_.movie!.movie.year.toString()),
+                  Text(_.movie!.title),
+                  Text(_.movie!.year.toString()),
+                  //Text(_.moviePopular!.title),
+                  //Text(_.moviePopular!.year.toString()),
                 ],
               ),
             ));

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movietestapp/Controllers/Home/home_controller.dart';
 import 'package:movietestapp/Models/movie.dart';
+import 'package:movietestapp/Models/movie_class.dart';
 
 class CardMovies extends StatelessWidget {
-  final Movie? carruselMovies;
+  final MovieClass? carruselMovies;
   const CardMovies({super.key, required this.carruselMovies});
 
   @override
@@ -27,12 +28,12 @@ class CardMovies extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            carruselMovies!.movie.title,
+                            carruselMovies!.title,
                             style: TextStyle(
                               color: Colors.white,
                             ),
                           ),
-                          Text(carruselMovies!.watchers.toString(),
+                          Text(carruselMovies!.year.toString(),
                               style: TextStyle(
                                 color: Colors.white,
                               )),
