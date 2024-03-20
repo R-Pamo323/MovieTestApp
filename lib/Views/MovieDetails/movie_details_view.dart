@@ -16,29 +16,56 @@ class MovieDetailsView extends StatelessWidget {
                 backgroundColor: Colors.deepPurple,
                 elevation: 0,
                 centerTitle: true,
-                title: Text(_.movie!.title),
-              ),
-              body: Column(
-                children: [
-                  Text(_.movie!.title),
-                  Text(_.movie!.year.toString()),
-                  RatingBar.builder(
-                    initialRating: 3,
-                    minRating: 1,
-                    direction: Axis.horizontal,
-                    allowHalfRating: true,
-                    itemCount: 5,
-                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                    itemBuilder: (context, _) => Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                    ),
-                    onRatingUpdate: (rating) {
-                      print(rating);
-                    },
+                leading: IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
                   ),
-                  LikeButton(),
-                ],
+                  onPressed: () => Get.back(),
+                ),
+                title: Text(
+                  _.movie!.title,
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
+              body: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Text(
+                      _.movie!.title,
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    Text(_.movie!.year.toString()),
+                    RatingBar.builder(
+                      initialRating: 3,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {
+                        print(rating);
+                      },
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Row(
+                      children: [
+                        Text("Te gusto esta pelicula ?"),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        LikeButton(),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ));
   }

@@ -14,39 +14,52 @@ class MoviesView extends StatelessWidget {
     return GetBuilder<HomeController>(
         init: HomeController(),
         builder: (_) => Container(
+              padding: const EdgeInsets.symmetric(vertical: 20),
               width: double.infinity,
+              height: MediaQuery.sizeOf(context).height * .9,
               child: Column(
                 children: [
-                  Flexible(
-                    child: CarouselSlider.builder(
-                        itemCount: _.listMovieTrending?.length,
-                        itemBuilder: (context, index, realIndex) {
-                          return CardMovies(
-                              carruselMovies:
-                                  _.listMovieTrending?[index].movie);
-                        },
-                        options: CarouselOptions(
-                          height: 150.0,
-                          autoPlay: true,
-                          autoPlayCurve: Curves.easeInOut,
-                          enlargeCenterPage: true,
-                          autoPlayInterval: Duration(seconds: 4),
-                          scrollDirection: Axis.horizontal,
-                        )),
-                  ),
-                  Flexible(
-                    child: MasonryGridView.builder(
-                        scrollDirection: Axis.vertical,
-                        gridDelegate:
-                            SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2),
-                        itemCount: _.listMoviePopular?.length,
-                        itemBuilder: (context, index) {
-                          return GridMovies(
-                            gridMovies: _.listMoviePopular?[index],
-                          );
-                        }),
-                  )
+                  if (_.listMovieTrending!.isNotEmpty &&
+                      _.listMovieTrending != null)
+                    Flexible(
+                      flex: 2,
+                      child: CarouselSlider.builder(
+                          itemCount: _.listMovieTrending?.length,
+                          itemBuilder: (context, index, realIndex) {
+                            return CardMovies(
+                                carruselMovies:
+                                    _.listMovieTrending?[index].movie);
+                          },
+                          options: CarouselOptions(
+                            height: 150.0,
+                            autoPlay: true,
+                            autoPlayCurve: Curves.easeInOut,
+                            enlargeCenterPage: true,
+                            autoPlayInterval: const Duration(seconds: 4),
+                            scrollDirection: Axis.horizontal,
+                          )),
+                    ),
+                  if (_.listMoviePopular!.isNotEmpty &&
+                      _.listMoviePopular != null)
+                    Flexible(
+                      flex: 9,
+                      child: MasonryGridView.builder(
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 30),
+                          scrollDirection: Axis.vertical,
+                          mainAxisSpacing: 4,
+                          crossAxisSpacing: 4,
+                          gridDelegate:
+                              const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2),
+                          itemCount: _.listMoviePopular?.length,
+                          itemBuilder: (context, index) {
+                            return GridMovies(
+                              gridMovies: _.listMoviePopular?[index],
+                            );
+                          }),
+                    )
                 ],
               ),
             ));

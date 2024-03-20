@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:movietestapp/Routes/app_routes.dart';
 
 class LoginController extends GetxController {
   @override
@@ -8,7 +9,7 @@ class LoginController extends GetxController {
     super.onInit();
   }
 
-  Future<UserCredential> signInWithGoogle() async {
+  signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -22,7 +23,11 @@ class LoginController extends GetxController {
       idToken: googleAuth?.idToken,
     );
 
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    final authResult =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+    final User? user = authResult.user;
+    final User? currentUser = FirebaseAuth.instance.currentUser;
+
+    Get.offAllNamed(AppRoutes.HOME, arguments: currentUser);
   }
 }

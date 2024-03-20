@@ -18,7 +18,8 @@ class GridMovies extends StatelessWidget {
                     _.goToMovieDetails(gridMovies!);
                   },
                   child: Container(
-                    decoration: BoxDecoration(
+                    padding: EdgeInsets.all(20),
+                    decoration: const BoxDecoration(
                       color: Colors.deepPurple,
                     ),
                     child: Column(
@@ -27,13 +28,15 @@ class GridMovies extends StatelessWidget {
                         Text(
                           gridMovies!.title,
                           style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                           ),
                         ),
-                        Text(gridMovies!.year.toString(),
-                            style: TextStyle(
-                              color: Colors.black,
-                            )),
+                        Text(
+                          gridMovies!.year.toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        )
                       ],
                     ),
                   )),

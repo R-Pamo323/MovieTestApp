@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movietestapp/Constants/app_strings.dart';
 import 'package:movietestapp/Controllers/Home/home_controller.dart';
 
 class HomeView extends StatelessWidget {
@@ -14,18 +15,23 @@ class HomeView extends StatelessWidget {
                 backgroundColor: Colors.deepPurple,
                 elevation: 0,
                 centerTitle: true,
-                title: Text("My Movies"),
+                title: const Text(
+                  AppStrings.movies,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ),
               bottomNavigationBar: BottomNavigationBar(
                 currentIndex: 0,
                 onTap: (value) {
                   _.changeView(value);
                 },
-                items: [
+                items: const [
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.movie), label: "Movie"),
+                      icon: Icon(Icons.movie), label: AppStrings.movies),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.person), label: "Perfil")
+                      icon: Icon(Icons.person), label: AppStrings.profile)
                 ],
               ),
               body: _.childView,

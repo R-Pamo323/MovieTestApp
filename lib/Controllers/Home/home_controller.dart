@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movietestapp/Data/Providers/track_api.dart';
@@ -11,11 +12,16 @@ import 'package:movietestapp/Views/Profiles/profile_view.dart';
 class HomeController extends GetxController {
   Widget childView = MoviesView();
   List<Movie>? listMovieTrending = [];
-  //List<MoviePopular>? listMoviePopular = [];
   List<MovieClass>? listMoviePopular = [];
+  User? infoUser;
+  TextEditingController tfName = TextEditingController();
+  TextEditingController tfEmail = TextEditingController();
 
   @override
   void onInit() {
+    infoUser = Get.arguments;
+    tfName.text = infoUser!.displayName!;
+    tfEmail.text = infoUser!.email!;
     super.onInit();
   }
 
@@ -45,8 +51,4 @@ class HomeController extends GetxController {
   void goToMovieDetails(MovieClass carruselMovies) async {
     Get.toNamed(AppRoutes.MOVIEDETAILS, arguments: carruselMovies);
   }
-/*
-  void goToMovieDetailsPopular(MoviePopular gridMovies) async {
-    Get.toNamed(AppRoutes.MOVIEDETAILS, arguments: gridMovies);
-  }*/
 }
