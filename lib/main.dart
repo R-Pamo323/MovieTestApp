@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movietestapp/Routes/app_pages.dart';
 import 'package:movietestapp/Views/Home/home_view.dart';
 
 void main() {
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'My Movies',
       debugShowCheckedModeBanner: false,
+      getPages: AppPages.pages,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
