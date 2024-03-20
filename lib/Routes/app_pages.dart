@@ -1,12 +1,11 @@
 import 'package:get/get.dart';
-import 'package:movietestapp/Bindings/Splash/splash_binding.dart';
-import 'package:movietestapp/Views/Splash/splash_view.dart';
 import 'package:movietestapp/utils/bindings_utils.dart';
 import 'package:movietestapp/utils/views_utils.dart';
 import 'package:movietestapp/Routes/app_routes.dart';
 
 class AppPages {
   static final List<GetPage> pages = [
+    //Nos movilizamos entre las diferntes rutas
     GetPage(
         name: AppRoutes.LOGIN,
         page: () => const LoginView(),

@@ -10,7 +10,8 @@ import 'package:movietestapp/Views/Movies/movies_view.dart';
 import 'package:movietestapp/Views/Profiles/profile_view.dart';
 
 class HomeController extends GetxController {
-  Widget childView = MoviesView();
+  Widget childView = const MoviesView();
+  int tabIndex = 0;
   List<Movie>? listMovieTrending = [];
   List<MovieClass>? listMoviePopular = [];
   User? infoUser;
@@ -19,6 +20,7 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
+    //Traemos los argumentos del Usuario que creamos
     infoUser = Get.arguments;
     tfName.text = infoUser!.displayName!;
     tfEmail.text = infoUser!.email!;
@@ -29,25 +31,30 @@ class HomeController extends GetxController {
   void onReady() async {
     super.onReady();
     listMovieTrending =
-        await TrackApi(url: "https://api.trakt.tv/movies/trending").getData();
+        await const TrackApi(url: "https://api.trakt.tv/movies/trending")
+            .getData();
     listMoviePopular =
-        await TrackApi(url: "https://api.trakt.tv/movies/popular")
+        await const TrackApi(url: "https://api.trakt.tv/movies/popular")
             .getMovieClass();
     update();
   }
 
+  // Utilizamos para cambiar la vista entre Movies y Perfil
   void changeView(int index) {
     switch (index) {
       case 0:
-        childView = MoviesView();
+        childView = const MoviesView();
+        tabIndex = index;
         break;
       case 1:
-        childView = ProfileView();
+        childView = const ProfileView();
+        tabIndex = index;
         break;
     }
     update();
   }
 
+  //Utilizamos para que nos envie la información de la pelicula a nuestra vista de MoviesDetails
   void goToMovieDetails(MovieClass carruselMovies) async {
     Get.toNamed(AppRoutes.MOVIEDETAILS, arguments: carruselMovies);
   }

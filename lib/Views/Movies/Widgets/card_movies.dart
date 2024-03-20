@@ -15,12 +15,13 @@ class CardMovies extends StatelessWidget {
               width: 400,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
+                //Usamos el InkWell para poder hacer Tap en la Card
                 child: InkWell(
                     onTap: () {
                       _.goToMovieDetails(carruselMovies!);
                     },
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.green,
                       ),
                       child: Column(
@@ -28,12 +29,12 @@ class CardMovies extends StatelessWidget {
                         children: [
                           Text(
                             carruselMovies!.title,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                             ),
                           ),
                           Text(carruselMovies!.year.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                               )),
                         ],

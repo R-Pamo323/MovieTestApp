@@ -6,6 +6,7 @@ class MovieDetailsController extends GetxController {
 
   @override
   void onInit() {
+    //Traemos los argumentos de la pelicula para mostrarlo
     movie = Get.arguments;
 
     super.onInit();

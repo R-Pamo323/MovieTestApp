@@ -31,6 +31,7 @@ class MovieDetailsView extends StatelessWidget {
               body: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
+                  //Usamos los Plugins que piden en la practica
                   children: [
                     Text(
                       _.movie!.title,

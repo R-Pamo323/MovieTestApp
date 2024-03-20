@@ -23,7 +23,7 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               bottomNavigationBar: BottomNavigationBar(
-                currentIndex: 0,
+                currentIndex: _.tabIndex,
                 onTap: (value) {
                   _.changeView(value);
                 },

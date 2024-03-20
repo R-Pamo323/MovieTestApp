@@ -9,7 +9,8 @@ class SplashController extends GetxController {
 
   @override
   void onReady() {
-    Future.delayed(Duration(seconds: 3), () {
+    //Damos una duracion de 3 segundos del SPLASH
+    Future.delayed(const Duration(seconds: 3), () {
       Get.offNamed(AppRoutes.LOGIN);
     });
     super.onReady();

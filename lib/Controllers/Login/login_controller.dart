@@ -28,6 +28,7 @@ class LoginController extends GetxController {
     final User? user = authResult.user;
     final User? currentUser = FirebaseAuth.instance.currentUser;
 
+    //Enviamos la información del usuario que creamos
     Get.offAllNamed(AppRoutes.HOME, arguments: currentUser);
   }
 }
