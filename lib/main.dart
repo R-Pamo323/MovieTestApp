@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movietestapp/Views/Login/login_page_view.dart';
+import 'package:get/get.dart';
+import 'package:movietestapp/Views/Home/home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +12,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      title: 'My Movies',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Login(),
+      home: HomeView(),
     );
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:movietestapp/Data/Providers/track_api.dart';
+import 'package:movietestapp/Models/movie.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -9,6 +11,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  List<Movie> listMovie = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,18 +27,21 @@ class _LoginState extends State<Login> {
           children: [
             TextButton(
                 onPressed: () async {
-                  Map<String, String> requestHeaders = {
-                    'Content-type': 'application/json',
-                    'trakt-api-version': '2',
-                    'trakt-api-key':
-                        'fa891380fa56cac118ed72114a122247119a22e564be5890e170276d50065467'
-                  };
-
-                  var url = Uri.parse("https://api.trakt.tv/movies/trending");
-                  var rpta = await http.get(url, headers: requestHeaders);
-                  print(rpta.body);
+                  listMovie = await TrackApi(
+                          url: "https://api.trakt.tv/movies/trending")
+                      .getData();
                 },
                 child: Text("Traer Peliculas Trending")),
+            if (listMovie.isNotEmpty)
+              ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: listMovie?.length ?? 0,
+                itemBuilder: (context, index) {
+                  final item = listMovie?[index];
+                  return Text(item!.movie.title.toString());
+                },
+              ),
             TextButton(
                 onPressed: () async {
                   Map<String, String> requestHeaders = {
