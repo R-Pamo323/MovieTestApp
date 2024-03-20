@@ -1,10 +1,21 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 import 'package:movietestapp/Routes/app_routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashController extends GetxController {
+  SharedPreferences? pref;
+  DatabaseReference? dbUsersReference;
+
   @override
   void onInit() {
+    init();
     super.onInit();
+  }
+
+  void init() async {
+    pref = await SharedPreferences.getInstance();
+    dbUsersReference = FirebaseDatabase.instance.ref('usuarios');
   }
 
   @override
