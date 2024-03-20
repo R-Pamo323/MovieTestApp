@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movietestapp/Controllers/Home/home_controller.dart';
-import 'package:movietestapp/Models/movie.dart';
 import 'package:movietestapp/Models/movie_class.dart';
 
 class CardMovies extends StatelessWidget {
